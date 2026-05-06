@@ -1,8 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Read(//home/mosie/.local/share/nvim/lazy/nvim-treesitter/**)",
-      "Read(//home/mosie/.local/share/nvim/lazy/nvim-treesitter/lua/**)"
-    ]
-  }
-}
