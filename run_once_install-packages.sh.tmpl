@@ -1,0 +1,41 @@
+#!/bin/bash
+set -e
+
+echo "== Updating system =="
+sudo pacman -Syu --noconfirm
+
+echo "== Installing base desktop =="
+sudo pacman -S --needed --noconfirm \
+  hyprland hyprpaper hyprlock hypridle \
+  waybar \
+  kitty \
+  wofi \
+  dolphin \
+  neovim git base-devel \
+  rustup nodejs npm \
+  wl-clipboard grim slurp \
+  fzf zoxide \
+  swaync \
+  network-manager-applet \
+  wireplumber pavucontrol \
+  playerctl brightnessctl \
+  xdg-desktop-portal-hyprland xdg-desktop-portal \
+  ttf-jetbrains-mono-nerd ttf-fira-code \
+  fish
+
+echo "== Installing AUR helper (paru) =="
+if ! command -v paru &>/dev/null; then
+  tmpdir=$(mktemp -d)
+  git clone https://aur.archlinux.org/paru.git "$tmpdir"
+  (cd "$tmpdir" && makepkg -si --noconfirm)
+  rm -rf "$tmpdir"
+fi
+
+echo "== AUR packages =="
+paru -S --needed --noconfirm \
+  hyprshot
+
+echo "== Rust toolchain =="
+rustup default stable
+
+echo "== Done =="

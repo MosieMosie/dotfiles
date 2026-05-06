@@ -1,0 +1,46 @@
+# Enable the subsequent settings only in interactive sessions
+case $- in
+  *i*) ;;
+    *) return;;
+esac
+
+# Path to your oh-my-bash installation.
+export OSH='/home/mosie/.oh-my-bash'
+
+OSH_THEME="agnoster"
+
+OMB_USE_SUDO=true
+
+completions=(
+  git
+  composer
+  ssh
+)
+
+aliases=(
+  general
+)
+
+plugins=(
+  git
+  bashmarks
+)
+
+source "$OSH"/oh-my-bash.sh
+
+# FZF
+eval "$(fzf --bash)"
+
+# zoxide
+eval "$(zoxide init bash)"
+
+# Aliases
+alias vim="nvim"
+
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+export PATH="$HOME/.local/bin:$PATH"
+. "$HOME/.cargo/env"

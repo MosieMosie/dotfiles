@@ -1,0 +1,7 @@
+0000000000000000000000000000000000000000 ef054a3cbb89ff0123eafcc2d102632ff8a32997 mosie <mosie@archlinux.(none)> 1772894034 +0100	clone: from https://github.com/MosieMosie/nvim.git
+ef054a3cbb89ff0123eafcc2d102632ff8a32997 f047fbeef07227e2ce77a75ddc73bf083ee0e62e mosie <mosie@archlinux.(none)> 1772894047 +0100	checkout: moving from master to rewrite_config
+f047fbeef07227e2ce77a75ddc73bf083ee0e62e 6ce4ad76a21b0db4eadab8d7c7ae552bc7494631 Simon Koopmans <s.koopmans@acs-buildings.com> 1775048486 +0200	commit: specific commit for tree sitter
+6ce4ad76a21b0db4eadab8d7c7ae552bc7494631 b97b2b6923a9e81223dae9f2f5266bdb70ca898c Simon Koopmans <s.koopmans@acs-buildings.com> 1775048528 +0200	merge origin/rewrite_config: Merge made by the 'ort' strategy.
+b97b2b6923a9e81223dae9f2f5266bdb70ca898c 9672955e23099ff5f92e41a231877beb0d0a75d3 Simon Koopmans <s.koopmans@acs-buildings.com> 1776103674 +0200	reset: moving to origin/rewrite_config
+9672955e23099ff5f92e41a231877beb0d0a75d3 4bd2be4c4e2c3099a53466610e1ac19ff8176618 Simon Koopmans <s.koopmans@acs-buildings.com> 1776103943 +0200	pull: Fast-forward
+4bd2be4c4e2c3099a53466610e1ac19ff8176618 bd165b1b8d3f456878fbfc1e3237fe14445d503c Simon Koopmans <s.koopmans@acs-buildings.com> 1776106172 +0200	commit: minor clean ups hope it works as intended

@@ -1,0 +1,93 @@
+minor clean ups hope it works as intended
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch rewrite_config
+# Your branch is up to date with 'origin/rewrite_config'.
+#
+# Changes to be committed:
+#	modified:   lua/config/auto-cmds.lua
+#	modified:   lua/config/keymaps.lua
+#	modified:   lua/config/options.lua
+#	modified:   lua/plugins/bufferline.lua
+#	modified:   lua/plugins/lazydev.lua
+#
+# ------------------------ >8 ------------------------
+# Do not modify or remove the line above.
+# Everything below it will be ignored.
+diff --git a/lua/config/auto-cmds.lua b/lua/config/auto-cmds.lua
+index 4f26dc4..8077515 100644
+--- a/lua/config/auto-cmds.lua
++++ b/lua/config/auto-cmds.lua
+@@ -31,7 +31,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
+     end, { desc = "LSP: Go to Definition (Telescope)", buffer = event.buf })
+ 
+     map("gi", vim.lsp.buf.implementation, "Goto Implementation")
+-    map("<C-k>", vim.lsp.buf.signature_help, "Signature Help (old binding)")
+     map("<leader>ca", vim.lsp.buf.code_action, "Code Action")
+     map("<leader>rn", vim.lsp.buf.rename, "Rename all references")
+ 
+diff --git a/lua/config/keymaps.lua b/lua/config/keymaps.lua
+index a7b48e6..c3642d3 100644
+--- a/lua/config/keymaps.lua
++++ b/lua/config/keymaps.lua
+@@ -3,4 +3,4 @@
+ vim.keymap.set("n", "<leader>j", ":bd <CR>")
+ 
+ vim.keymap.set("n", "<Esc><Esc>", ":nohlsearch<CR>", { silent = true })
+-vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
++--vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
+diff --git a/lua/config/options.lua b/lua/config/options.lua
+index c22efc3..35b65d8 100644
+--- a/lua/config/options.lua
++++ b/lua/config/options.lua
+@@ -1,7 +1,7 @@
+-vim.cmd("set expandtab")
+-vim.cmd("set tabstop=2")
+-vim.cmd("set softtabstop=2")
+-vim.cmd("set shiftwidth=2")
++vim.opt.expandtab = true
++vim.opt.tabstop = 2
++vim.opt.softtabstop = 2
++vim.opt.shiftwidth = 2
+ 
+ vim.g.mapleader = " "
+ vim.g.maplocalleader = " "
+diff --git a/lua/plugins/bufferline.lua b/lua/plugins/bufferline.lua
+index c65536a..f6eedec 100644
+--- a/lua/plugins/bufferline.lua
++++ b/lua/plugins/bufferline.lua
+@@ -17,17 +17,7 @@ return {
+       },
+     })
+ 
+-    vim.api.nvim_set_keymap(
+-      "n",
+-      "<Tab>",
+-      ":BufferLineCycleNext<CR>",
+-      { noremap = true, silent = true }
+-    )
+-    vim.api.nvim_set_keymap(
+-      "n",
+-      "<S-Tab>",
+-      ":BufferLineCyclePrev<CR>",
+-      { noremap = true, silent = true }
+-    )
++    vim.keymap.set("n", "<Tab>", "<cmd>BufferLineCycleNext<CR>", { silent = true })
++    vim.keymap.set("n", "<S-Tab>", "<cmd>BufferLineCyclePrev<CR>", { silent = true })
+   end,
+ }
+diff --git a/lua/plugins/lazydev.lua b/lua/plugins/lazydev.lua
+index 7cc5a61..3ee3b1c 100644
+--- a/lua/plugins/lazydev.lua
++++ b/lua/plugins/lazydev.lua
+@@ -14,8 +14,7 @@ return {
+     "saghen/blink.cmp",
+     opts = {
+       sources = {
+-        -- add lazydev to your completion providers
+-        default = { "lazydev", "lsp", "path", "snippets", "buffer" },
++        default = { "lazydev" },
+         providers = {
+           lazydev = {
+             name = "LazyDev",

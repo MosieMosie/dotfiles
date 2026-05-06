@@ -1,0 +1,320 @@
+/* ============================================================
+   Waybar — Catppuccin Mocha Theme
+   Place this at: ~/.config/waybar/style.css
+   ============================================================ */
+
+/* ── Catppuccin Mocha Palette ──────────────────────────────── */
+@define-color base    #1e1e2e;
+@define-color mantle  #181825;
+@define-color crust   #11111b;
+@define-color surface0 #313244;
+@define-color surface1 #45475a;
+@define-color surface2 #585b70;
+@define-color overlay0 #6c7086;
+@define-color overlay1 #7f849c;
+@define-color overlay2 #9399b2;
+@define-color subtext0 #a6adc8;
+@define-color subtext1 #bac2de;
+@define-color text     #cdd6f4;
+@define-color lavender #b4befe;
+@define-color blue     #89b4fa;
+@define-color sapphire #74c7ec;
+@define-color sky      #89dceb;
+@define-color teal     #94e2d5;
+@define-color green    #a6e3a1;
+@define-color yellow   #f9e2af;
+@define-color peach    #fab387;
+@define-color maroon   #eba0ac;
+@define-color red      #f38ba8;
+@define-color mauve    #cba6f7;
+@define-color pink     #f5c2e7;
+@define-color flamingo #f2cdcd;
+@define-color rosewater #f5e0dc;
+
+/* ── Global Reset ───────────────────────────────────────────── */
+* {
+    font-family: "JetBrainsMono Nerd Font", "Noto Sans", monospace;
+    font-size: 13px;
+    font-weight: 500;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+}
+
+/* ── Bar Root ───────────────────────────────────────────────── */
+window#waybar {
+    background: transparent;
+    color: @text;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+/* ── Base pill container ────────────────────────────────────── */
+.modules-left,
+.modules-center,
+.modules-right {
+    background: @base;
+    border-radius: 12px;
+    padding: 0 6px;
+    margin: 0 4px;
+    border: 1px solid @surface0;
+}
+
+.modules-right {
+    padding-right: 0;
+}
+
+/* ── Module base styles ─────────────────────────────────────── */
+#workspaces,
+#window,
+#clock,
+#cpu,
+#memory,
+#battery,
+#network,
+#pulseaudio,
+#mpd,
+#tray,
+#custom-notification,
+#custom-power {
+    padding: 0 10px;
+    color: @text;
+    background: transparent;
+}
+
+/* ── Separators between modules ─────────────────────────────── */
+#cpu, #memory,
+#battery, #network {
+    border-left: 1px solid @surface1;
+}
+
+/* ── Workspaces ─────────────────────────────────────────────── */
+#workspaces {
+    padding: 0 4px;
+}
+
+#workspaces button {
+    padding: 0 8px;
+    margin: 4px 2px;
+    background: @surface0;
+    color: @subtext0;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+    min-width: 28px;
+}
+
+#workspaces button:hover {
+    background: @surface1;
+    color: @text;
+    border-color: @lavender;
+}
+
+#workspaces button.active {
+    background: @mauve;
+    color: @crust;
+    border-color: @mauve;
+    font-weight: 700;
+    box-shadow: 0 0 8px rgba(203, 166, 247, 0.4);
+}
+
+#workspaces button.urgent {
+    background: @red;
+    color: @crust;
+    border-color: @red;
+    animation: blink 0.8s step-end infinite alternate;
+}
+
+@keyframes blink {
+    to { opacity: 0.5; }
+}
+
+/* ── Window title ───────────────────────────────────────────── */
+#window {
+    color: @subtext1;
+    font-style: italic;
+    border-left: 1px solid @surface1;
+}
+
+/* ── Clock ──────────────────────────────────────────────────── */
+#clock {
+    color: @blue;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* ── CPU ────────────────────────────────────────────────────── */
+#cpu {
+    color: @green;
+}
+
+#cpu.high {
+    color: @red;
+    animation: blink 0.5s step-end infinite alternate;
+}
+
+/* ── Memory ─────────────────────────────────────────────────── */
+#memory {
+    color: @teal;
+}
+
+#memory.warning {
+    color: @yellow;
+}
+
+#memory.critical {
+    color: @red;
+}
+
+/* ── Battery ────────────────────────────────────────────────── */
+#battery {
+    color: @green;
+}
+
+#battery.charging,
+#battery.plugged {
+    color: @yellow;
+}
+
+#battery.full {
+    color: @teal;
+}
+
+#battery.warning:not(.charging) {
+    color: @peach;
+}
+
+#battery.critical:not(.charging) {
+    color: @red;
+    animation: blink 0.6s step-end infinite alternate;
+}
+
+/* ── Network ────────────────────────────────────────────────── */
+#network {
+    color: @lavender;
+}
+
+#network.disconnected {
+    color: @red;
+}
+
+/* ── PulseAudio ─────────────────────────────────────────────── */
+#pulseaudio {
+    color: @pink;
+}
+
+#pulseaudio.muted {
+    color: @surface2;
+}
+
+#pulseaudio.bluetooth {
+    color: @blue;
+}
+
+/* ── MPD ────────────────────────────────────────────────────── */
+#mpd {
+    color: @mauve;
+}
+
+#mpd.disconnected,
+#mpd.stopped {
+    color: @surface2;
+}
+
+/* ── Tray ───────────────────────────────────────────────────── */
+#tray {
+    padding: 0 8px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: @red;
+    border-radius: 8px;
+}
+
+/* ── Notifications ──────────────────────────────────────────── */
+#custom-notification {
+    color: @mauve;
+    font-size: 16px;
+    padding: 0 12px;
+    border-left: 1px solid @surface1;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+#custom-notification.notification {
+    color: @red;
+}
+
+#custom-notification.dnd-none,
+#custom-notification.dnd-notification,
+#custom-notification.dnd-inhibited-none,
+#custom-notification.dnd-inhibited-notification {
+    color: @surface2;
+}
+
+#custom-notification:hover {
+    background: @surface0;
+    color: @text;
+}
+
+/* ── Power button ───────────────────────────────────────────── */
+#custom-power {
+    color: @red;
+    font-size: 16px;
+    padding: 0 14px;
+    border-left: 1px solid @surface1;
+    border-radius: 0 11px 11px 0;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+#custom-power:hover {
+    background: @red;
+    color: @crust;
+}
+
+/* ── Tooltip ────────────────────────────────────────────────── */
+tooltip {
+    background: @mantle;
+    border: 1px solid @surface1;
+    border-radius: 10px;
+    color: @text;
+    padding: 6px;
+}
+
+tooltip label {
+    color: @text;
+}
+
+/* ── Power Menu ─────────────────────────────────────────────── */
+menu {
+    background: @mantle;
+    border: 1px solid @surface1;
+    border-radius: 10px;
+    padding: 4px;
+    color: @text;
+}
+
+menu menuitem {
+    padding: 6px 16px;
+    border-radius: 8px;
+    transition: background 0.15s ease;
+    font-family: "JetBrainsMono Nerd Font", monospace;
+    font-size: 13px;
+}
+
+menu menuitem:hover {
+    background: @surface0;
+    color: @red;
+}
+
+menu separator {
+    background: @surface1;
+    margin: 4px 8px;
+    min-height: 1px;
+}

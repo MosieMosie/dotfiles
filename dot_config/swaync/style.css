@@ -1,0 +1,285 @@
+/* Catppuccin Mocha — swaync theme */
+
+* {
+  font-family: "JetBrainsMono Nerd Font", "Noto Sans", monospace;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+@define-color base    #1e1e2e;
+@define-color mantle  #181825;
+@define-color crust   #11111b;
+@define-color surface0 #313244;
+@define-color surface1 #45475a;
+@define-color surface2 #585b70;
+@define-color text     #cdd6f4;
+@define-color subtext0 #a6adc8;
+@define-color subtext1 #bac2de;
+@define-color lavender #b4befe;
+@define-color blue     #89b4fa;
+@define-color mauve    #cba6f7;
+@define-color pink     #f5c2e7;
+@define-color red      #f38ba8;
+@define-color peach    #fab387;
+@define-color yellow   #f9e2af;
+@define-color green    #a6e3a1;
+
+notificationwindow,
+notificationwindow *,
+blankwindow,
+blankwindow * {
+  background: none;
+  background-color: transparent;
+  box-shadow: none;
+  border: none;
+}
+
+.blank-window {
+  background: transparent;
+}
+
+/* ── Control Center ───────────────────────────────── */
+.control-center {
+  background: @base;
+  border: 1px solid @surface0;
+  border-radius: 12px;
+  color: @text;
+  padding: 6px;
+}
+
+.control-center .control-center-list {
+  background: transparent;
+}
+
+.control-center .control-center-list-placeholder {
+  color: @subtext0;
+  opacity: 0.6;
+}
+
+/* ── Widgets ──────────────────────────────────────── */
+.widget {
+  margin: 4px;
+  padding: 6px 8px;
+  border-radius: 10px;
+}
+
+.widget-title > label {
+  font-size: 14px;
+  font-weight: 700;
+  color: @text;
+  margin-right: 6px;
+}
+
+.widget-title > button {
+  background: @surface0;
+  color: @subtext0;
+  border: 1px solid @surface1;
+  border-radius: 8px;
+  padding: 2px 10px;
+  font-size: 12px;
+  transition: background 0.15s ease;
+}
+
+.widget-title > button:hover {
+  background: @surface1;
+  color: @text;
+}
+
+.widget-dnd label {
+  font-size: 13px;
+  color: @text;
+  margin-right: 6px;
+}
+
+.widget-dnd switch {
+  border-radius: 100px;
+  background: @surface0;
+  border: 1px solid @surface1;
+  min-width: 40px;
+  min-height: 20px;
+}
+
+.widget-dnd switch:checked {
+  background: @mauve;
+  border-color: @mauve;
+}
+
+.widget-dnd switch slider {
+  border-radius: 100px;
+  background: @text;
+  min-width: 16px;
+  min-height: 16px;
+  margin: 1px;
+}
+
+/* ── Notifications ────────────────────────────────── */
+.notification-row {
+  background: none;
+  outline: none;
+}
+
+.notification-row:focus,
+.notification-row:hover {
+  background: transparent;
+}
+
+.notification-row .notification-background {
+  padding: 4px 6px;
+}
+
+.notification-row .notification-background .notification {
+  background: @mantle;
+  border: 1px solid @surface0;
+  border-radius: 10px;
+  padding: 0;
+  transition: background 0.15s ease;
+}
+
+.notification-row .notification-background .notification.critical {
+  border-color: @red;
+}
+
+.notification-default-action {
+  padding: 4px;
+  margin: 0;
+  background: transparent;
+  border: none;
+  color: @text;
+  border-radius: 10px;
+  transition: background 0.15s ease;
+}
+
+.notification-default-action:hover {
+  background: @surface0;
+}
+
+.notification-default-action:not(:only-child) {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.notification-content {
+  background: transparent;
+  border-radius: 10px;
+  padding: 2px;
+}
+
+.notification-content .image {
+  -gtk-icon-size: 48px;
+  border-radius: 8px;
+  margin: 4px;
+}
+
+.notification-content .app-icon {
+  -gtk-icon-size: 18px;
+  margin: 4px;
+}
+
+.text-box .summary {
+  font-size: 13px;
+  font-weight: 700;
+  color: @text;
+}
+
+.text-box .time {
+  font-size: 11px;
+  color: @subtext0;
+  margin-right: 24px;
+}
+
+.text-box .body {
+  font-size: 12px;
+  color: @subtext1;
+}
+
+.close-button {
+  background: @surface0;
+  color: @subtext0;
+  border: none;
+  border-radius: 100%;
+  padding: 0;
+  min-width: 20px;
+  min-height: 20px;
+  margin-top: 6px;
+  margin-right: 6px;
+  transition: background 0.15s ease;
+}
+
+.close-button:hover {
+  background: @red;
+  color: @crust;
+}
+
+/* ── Notification Groups ──────────────────────────── */
+.notification-group {
+  transition: opacity 200ms ease-in-out;
+}
+
+.notification-group.collapsed.not-expanded {
+  opacity: 0.4;
+}
+
+.notification-group .notification-group-close-button .close-button {
+  margin: 8px 16px;
+}
+
+.notification-group .notification-group-buttons,
+.notification-group .notification-group-headers {
+  margin: 0 12px;
+  color: @subtext0;
+}
+
+.notification-group .notification-group-headers .notification-group-icon {
+  -gtk-icon-size: 24px;
+}
+
+/* ── Alt Actions ──────────────────────────────────── */
+.notification-alt-actions {
+  background: none;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding: 4px;
+}
+
+.notification-action {
+  margin: 3px;
+  padding: 0;
+}
+
+.notification-action > button {
+  border-radius: 8px;
+  background: @surface0;
+  color: @text;
+  border: 1px solid @surface1;
+  font-size: 12px;
+  padding: 2px 8px;
+  transition: background 0.15s ease;
+}
+
+.notification-action > button:hover {
+  background: @surface1;
+}
+
+/* ── Floating toast notifications ─────────────────── */
+.floating-notifications {
+  background: transparent;
+  background-color: transparent;
+}
+
+.floating-notifications .notification-row {
+  background: transparent;
+  background-color: transparent;
+}
+
+.floating-notifications .notification-background {
+  background: transparent;
+  background-color: transparent;
+  padding: 6px 8px;
+}
+
+.floating-notifications .notification {
+  background-color: @mantle !important;
+  border: 1px solid @surface0 !important;
+  border-radius: 10px !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6) !important;
+}

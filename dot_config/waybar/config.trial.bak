@@ -1,0 +1,182 @@
+// -*- mode: jsonc -*-
+// Catppuccin Mocha — Merged Config
+{
+    "layer": "top",
+    "position": "top",
+    "height": 36,
+    "margin-top": 6,
+    "margin-left": 12,
+    "margin-right": 12,
+    "spacing": 0,
+    "exclusive": true,
+    "passthrough": false,
+    "gtk-layer-shell": true,
+
+    "modules-left": [
+        "custom/archicon",
+        "clock",
+        "cpu",
+        "memory",
+        "disk",
+        "temperature"
+    ],
+    "modules-center": [
+        "hyprland/workspaces"
+    ],
+    "modules-right": [
+        "wlr/taskbar",
+        "idle_inhibitor",
+        "pulseaudio/slider",
+        "pulseaudio",
+        "network",
+        "hyprland/language",
+        "custom/power"
+    ],
+
+    // ── Arch Icon ────────────────────────────────────────────────────────────
+    "custom/archicon": {
+        "format": "",
+        "on-click": "wofi --show drun",
+        "tooltip": false
+    },
+
+    // ── Clock ────────────────────────────────────────────────────────────────
+    "clock": {
+        "timezone": "Europe/Amsterdam",
+        "format": "  {:%H:%M   %d/%m}",
+        "format-alt": "  {:%A, %d %B %Y}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "month",
+            "on-scroll": 1,
+            "format": {
+                "months":   "<span color='#cba6f7'><b>{}</b></span>",
+                "days":     "<span color='#cdd6f4'>{}</span>",
+                "weekdays": "<span color='#a6e3a1'><b>{}</b></span>",
+                "today":    "<span color='#f38ba8'><b><u>{}</u></b></span>"
+            }
+        }
+    },
+
+    // ── CPU ──────────────────────────────────────────────────────────────────
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": true,
+        "tooltip-format": "CPU usage: {usage}%\nCores: {cores}",
+        "interval": 2
+    },
+
+    // ── Memory ───────────────────────────────────────────────────────────────
+    "memory": {
+        "format": "{}% 󰍛",
+        "tooltip": true,
+        "tooltip-format": "RAM: {used} / {total} ({percentage}%)",
+        "interval": 5
+    },
+
+    // ── Disk ─────────────────────────────────────────────────────────────────
+    "disk": {
+        "format": "{percentage_free}% ",
+        "tooltip": true,
+        "tooltip-format": "Free: {free} / {total} ({percentage_free}%)"
+    },
+
+    // ── Temperature ──────────────────────────────────────────────────────────
+    "temperature": {
+        "critical-threshold": 80,
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": ["", "", "", "", ""],
+        "tooltip": true,
+        "tooltip-format": "Temp: {temperatureC}°C\nCritical > 80°C"
+    },
+
+    // ── Workspaces ───────────────────────────────────────────────────────────
+    "hyprland/workspaces": {
+        "format": "{id}",
+        "persistent-workspaces": { "*": 5 },
+        "disable-scroll": true,
+        "all-outputs": true,
+        "on-click": "activate",
+        "show-special": false
+    },
+
+    // ── Taskbar ──────────────────────────────────────────────────────────────
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "all-outputs": true,
+        "active-first": true,
+        "tooltip-format": "{name}",
+        "on-click": "activate",
+        "on-click-middle": "close",
+        "ignore-list": ["wofi", "rofi"]
+    },
+
+    // ── Idle Inhibitor ───────────────────────────────────────────────────────
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+
+    // ── PulseAudio Slider ────────────────────────────────────────────────────
+    "pulseaudio/slider": {
+        "format": "{volume}%",
+        "format-muted": " MUTE",
+        "step": 5,
+        "tooltip": false
+    },
+
+    // ── PulseAudio ───────────────────────────────────────────────────────────
+    "pulseaudio": {
+        "format": "{volume}% {icon}",
+        "format-muted": " {format_source}",
+        "format-bluetooth": "{volume}%  {icon}",
+        "format-bluetooth-muted": "  Muted",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pulsemixer",
+        "scroll-step": 2
+    },
+
+    // ── Network ──────────────────────────────────────────────────────────────
+    "network": {
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ifname} 󰈀",
+        "format-linked": "{ifname} (No IP)",
+        "format-disconnected": " Disconnected",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "tooltip-format": " {ifname} via {gwaddr}",
+        "tooltip-format-ethernet": " {ifname} {ipaddr}/{cidr}",
+        "tooltip-format-disconnected": "Disconnected",
+        "max-length": 50
+    },
+
+    // ── Language ─────────────────────────────────────────────────────────────
+    "hyprland/language": {
+        "format": "{} ",
+        "on-click": "hyprctl switchxkblayout at-translated-set-2-keyboard next",
+        "format-nl": "NL",
+        "format-en": "EN",
+        "format-es": "ES"
+    },
+
+    // ── Power ─────────────────────────────────────────────────────────────────
+    "custom/power": {
+        "format": "⏻",
+        "tooltip": false,
+        "menu": "on-click",
+        "menu-file": "$HOME/.config/waybar/power_menu.xml",
+        "menu-actions": {
+            "shutdown": "shutdown",
+            "reboot": "reboot",
+            "suspend": "systemctl suspend",
+            "hibernate": "systemctl hibernate"
+        }
+    }
+}

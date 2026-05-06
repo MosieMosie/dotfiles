@@ -1,0 +1,31 @@
+#!/bin/bash
+set -e
+
+export PATH="$HOME/.cargo/bin:$PATH"
+
+echo "== Cargo CLI tools =="
+command -v rg  >/dev/null || cargo install ripgrep
+command -v fd  >/dev/null || cargo install fd-find
+command -v eza >/dev/null || cargo install eza
+command -v tree-sitter >/dev/null || cargo install tree-sitter-cli
+
+echo "== Node global tools =="
+command -v pnpm >/dev/null || sudo npm install -g pnpm
+
+echo "== Set fish as default shell =="
+if [ "$(getent passwd "$(whoami)" | cut -d: -f7)" != "$(command -v fish)" ]; then
+  command -v fish | sudo tee -a /etc/shells
+  chsh -s "$(command -v fish)"
+fi
+
+echo "== oh-my-bash =="
+if [ ! -d "$HOME/.oh-my-bash" ]; then
+  bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)" --unattended
+fi
+
+echo "== nvm =="
+if [ ! -d "$HOME/.nvm" ]; then
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+fi
+
+echo "== Done =="

@@ -1,0 +1,6 @@
+# pack-refs with: peeled fully-peeled sorted 
+ca30c75765ae81da8c220f23237a58f173676e96 refs/remotes/origin/buffer-bar
+ef054a3cbb89ff0123eafcc2d102632ff8a32997 refs/remotes/origin/master
+f047fbeef07227e2ce77a75ddc73bf083ee0e62e refs/remotes/origin/rewrite_config
+2da7c1b1d2f1e553a4a10209e664154174bfdaca refs/remotes/origin/to-blink-cmp-and-beyond
+d7c7766b8e37d7025625f030ddd74e3b7d3ab8d9 refs/remotes/origin/updating-config
