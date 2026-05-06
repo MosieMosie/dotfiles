@@ -1,0 +1,11 @@
+# Neovim runtime junk
+dot_config/nvim/dot_git/
+lazy-lock.json
+*.log
+
+# Wofi junk
+dot_config/wofi/dot_git/
+
+# OS noise
+*.swp
+*.bak
