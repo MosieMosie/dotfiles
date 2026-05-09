@@ -71,14 +71,14 @@
 
     // ── CPU ──────────────────────────────────────────────────────────────────
     "cpu": {
-        "format": "  {usage}%",
+        "format": "<span size='large'>󰍛</span> {usage}%",
         "tooltip": true,
         "interval": 2
     },
 
     // ── Memory ───────────────────────────────────────────────────────────────
     "memory": {
-        "format": "  {}%",
+        "format": "<span size='large'>󰘚</span> {}%",
         "tooltip-format": "{used:0.1f}G / {total:0.1f}G",
         "interval": 5
     },
@@ -100,30 +100,30 @@
 
     // ── Network ──────────────────────────────────────────────────────────────
     "network": {
-        "format-wifi": "  {essid} ({signalStrength}%)",
-        "format-ethernet": "  {ipaddr}/{cidr}",
-        "format-linked": "  {ifname} (No IP)",
-        "format-disconnected": "  Disconnected",
-        "format-alt": "  {ifname}: {ipaddr}/{cidr}",
+        "format-wifi": "<span size='large'>󰤨</span> {essid} ({signalStrength}%)",
+        "format-ethernet": "<span size='large'>󰈀</span> {ipaddr}/{cidr}",
+        "format-linked": "<span size='large'>󰈀</span> {ifname} (No IP)",
+        "format-disconnected": "<span size='large'>󰤭</span> Disconnected",
+        "format-alt": "<span size='large'>󰈀</span> {ifname}: {ipaddr}/{cidr}",
         "tooltip-format": "{ifname} via {gwaddr}"
     },
 
     // ── PulseAudio ───────────────────────────────────────────────────────────
     "pulseaudio": {
         "format": "{icon}  {volume}%",
-        "format-bluetooth": "  {volume}%",
-        "format-bluetooth-muted": "  Muted",
-        "format-muted": "  Muted",
-        "format-source": "  {volume}%",
-        "format-source-muted": "",
+        "format-bluetooth": "<span size='large'>󰂯</span> {volume}%",
+        "format-bluetooth-muted": "<span size='large'>󰂲</span> Muted",
+        "format-muted": "<span size='large'>󰝟</span> Muted",
+        "format-source": "<span size='large'>󰍬</span> {volume}%",
+        "format-source-muted": "<span size='large'>󰍭</span>",
         "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
+            "headphone": "<span size='large'>󰋋</span>",
+            "hands-free": "<span size='large'>󰋎</span>",
+            "headset": "<span size='large'>󰋎</span>",
+            "phone": "<span size='large'>󰏲</span>",
+            "portable": "<span size='large'>󰏲</span>",
+            "car": "<span size='large'>󰄋</span>",
+            "default": ["<span size='large'>󰕿</span>", "<span size='large'>󰖀</span>", "<span size='large'>󰕾</span>"]
         },
         "on-click": "pavucontrol",
         "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+",

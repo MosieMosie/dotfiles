@@ -33,7 +33,7 @@
 
 /* ── Global Reset ───────────────────────────────────────────── */
 * {
-    font-family: "JetBrainsMono Nerd Font", "Noto Sans", monospace;
+    font-family: "FiraCode Nerd Font Mono", "Noto Sans", monospace;
     font-size: 13px;
     font-weight: 500;
     border: none;
@@ -304,7 +304,7 @@ menu menuitem {
     padding: 6px 16px;
     border-radius: 8px;
     transition: background 0.15s ease;
-    font-family: "JetBrainsMono Nerd Font", monospace;
+    font-family: "FiraCode Nerd Font Mono", monospace;
     font-size: 13px;
 }
 

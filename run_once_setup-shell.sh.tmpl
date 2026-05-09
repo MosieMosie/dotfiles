@@ -1,0 +1,30 @@
+#!/bin/bash
+set -e
+
+echo "== Rust toolchain =="
+rustup default stable
+
+echo "== Cargo tools =="
+export PATH="$HOME/.cargo/bin:$PATH"
+command -v tree-sitter >/dev/null || cargo install tree-sitter-cli
+
+echo "== oh-my-bash =="
+if [ ! -d "$HOME/.oh-my-bash" ]; then
+  curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh | bash -s -- --unattended
+fi
+
+echo "== nvm =="
+if [ ! -d "$HOME/.nvm" ]; then
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+fi
+
+echo "== node (lts) =="
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+nvm install --lts
+nvm alias default lts/*
+
+echo "== pnpm =="
+command -v pnpm >/dev/null || npm install -g pnpm@latest-10
+
+echo "== Done =="
